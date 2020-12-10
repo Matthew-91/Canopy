@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Canopy.Data.BankAccount>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color: #000000; font-weight: bold; padding-bottom: 10px":>Accounts</h2>
+
+<p style="padding: 10px; padding-bottom: 35px">
+    @Html.ActionLink("New Account", "Create", null, new { @class = "button-link" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountName)
+        </td>
+        <td style="padding-bottom: 0.6em">
+            @Html.ActionLink("Edit", "Edit", new { id = item.BankAccountId }, new { @class = "transa-button" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BankAccountId }, new { @class = "transa-button" }) |
+        </td>
+    </tr>
+}
+
+</table>

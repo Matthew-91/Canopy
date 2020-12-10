@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+        <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+            <title>Freeport by TEMPLATED</title>
+            <meta name="keywords" content="" />
+            <meta name="description" content="" />
+            <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="screen" />
+            @if (ViewBag.usesCharts == true)
+            {
+                <!--Load the AJAX API-->
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                <script type="text/javascript">
+                // Load the Visualization API and the corechart package.
+                    google.charts.load('current', { 'packages': ['corechart'] });
+                </script>
+            }
+        </head>
+        <body>
+            <div id="wrapper">
+
+                <div id="header-wrapper">
+                    <div id="logo">
+                        <h1><a href="#">Canopy</a></h1>
+                    </div>
+                    <hr />
+                    <!-- end #logo -->
+                    <h2 id="header">
+                        <div id="menu">
+                            <ul>
+                                <li class="current_page_item"><a href="#">@Html.ActionLink("Home", "Index", "Home")</a></li>
+                                <li><a href="#">@Html.ActionLink("Manage Accounts", "Index", "BankAccounts")</a></li>
+                                <li><a href="#">@Html.ActionLink("Manage Profile", "Index", "Manage")</a></li>
+                                @if (Context.User.IsInRole(Constants.Roles.Admin))
+                                {
+                                    <li><a href="#">@Html.ActionLink("Manage Customers", "Index", "Customers")</a></li>
+                                }
+                                <li><a href="#">@Html.ActionLink("Log Off", "LogOff", "Account")</a></li>
+                            </ul>
+                        </div>
+                        <!-- end #menu -->
+                    </div>
+                    <!-- end #header -->
+                </div>
+                <!-- end #header-wrapper -->
+                <div id="page">
+                    @RenderBody()
+                </div>
+
+
+                <div id="footer">
+                    <p>&copy; Canopy Projects. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+                </div>
+                <!-- end #footer -->
+            </div>
+        </body>
+    </html>
+</ApplicationUser>
+</ApplicationUser></script>
+            </head>

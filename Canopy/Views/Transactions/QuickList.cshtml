@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Canopy.Data.Transaction>
+
+<p style="padding-bottom: 35px">
+    @Html.ActionLink("Add Transaction", "Create", "Transactions", new { isFromAccount = true, id = ViewBag.BankAccountId }, new { @class = "button-link" })
+    @Html.ActionLink("All Transactions", "Index", "Transactions", new { id = ViewBag.BankAccountId }, new { @class = "button-link" })
+    @Html.ActionLink("Budget Summary", "viewChart", "Budgets", new { id = ViewBag.BankAccountId }, new { @class = "button-link" })
+    @Html.ActionLink("Manage Categories", "Index", "Categories", new { id = ViewBag.BankAccountId }, new { @class = "button-link" })
+</p>
+<h2>Recent Transactions</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.When)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Memo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsWithdraw)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr class="@(item.IsWithdraw ? "cat-withdraw":"cat-deposit")">
+    <td style="text-align: center; vertical-align: top;">
+        @Html.DisplayFor(modelItem => item.When)
+    </td>
+    <td style="text-align: center; vertical-align: top;">
+        @Html.DisplayFor(modelItem => item.Amount)
+    </td>
+    <td style="text-align: center; vertical-align: top;">
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td style="text-align: center; vertical-align: top;">
+        @Html.DisplayFor(modelItem => item.Category.Name)
+    </td>
+    <td style="text-align: center; vertical-align: top;">
+        @Html.DisplayFor(modelItem => item.Memo)
+    </td>
+    <td style="text-align: center; vertical-align: top;">
+        @Html.DisplayFor(modelItem => item.IsWithdraw)
+    </td>
+    <td style="padding-bottom: 0.7em">
+        @Html.ActionLink("Edit", "Edit", "Transactions", new { id = item.TransactionsId, isFromAccount = true }, new { @class = "transa-button" }) |
+        @Html.ActionLink("Delete", "Delete", "Transactions", new { id = item.TransactionsId, isFromAccount = true }, new { @class = "transa-button" }) |
+    </td>
+</tr>
+}
+
+</table>

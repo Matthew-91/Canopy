@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Canopy.Data.Transaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="padding-bottom: 25px">Transaction History</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.When)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Memo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsWithdraw)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="@(item.IsWithdraw ? "cat-withdraw":"cat-deposit")">
+            <td style="text-align: center; vertical-align: top;">
+                @Html.DisplayFor(modelItem => item.When)
+            </td>
+            <td style="text-align: center; vertical-align: top;">
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td style="text-align: center; vertical-align: top;">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td style="text-align: center; vertical-align: top;">
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td style="text-align: center; vertical-align: top;">
+                @Html.DisplayFor(modelItem => item.Memo)
+            </td>
+            <td style="text-align: center; vertical-align: top;">
+                @Html.DisplayFor(modelItem => item.IsWithdraw)
+            </td>
+            <td tyle="padding-bottom: 0.7em">
+                @Html.ActionLink("Edit", "Edit", new { id = item.TransactionsId }, new { @class = "transa-button" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TransactionsId }, new { @class = "transa-button" })
+            </td>
+        </tr>
+    }
+
+</table>
+<div style="padding-top: 5px">
+
+        @Html.ActionLink("Back", "Details", "BankAccounts", new { id = ViewBag.BankAccountId }, null)
+   
+</div>

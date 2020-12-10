@@ -1,0 +1,21 @@
+﻿@model Canopy.Data.BankAccount
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="color:#000000; font-weight: bold" !important>@Model.AccountName</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.Customer.AspNetUserId)
+    </dl>
+    <div class="quickList">
+        @Html.Action("QuickList", "Transactions", new { id = Model.BankAccountId })
+    </div>
+</div>
+<p>
+
+</p>

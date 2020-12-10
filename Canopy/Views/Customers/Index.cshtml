@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Canopy.Data.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="padding-bottom: 35px">Customer List</h2>
+
+<p>
+   
+</p>
+<table class="table">
+    <tr>
+        <th style="text-align: center; vertical-align: top;">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th style="text-align: center; vertical-align: top;">
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th style="text-align: center; vertical-align: top;">
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="text-align: center; vertical-align: top;">
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td style="text-align: center; vertical-align: top;">
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td style="text-align: center; vertical-align: top;">
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td style="padding-bottom: 0.7em; padding-left: 0.2em">
+            @Html.ActionLink("Update Customer", "Edit", new { id=item.CustomerId }, new { @class = "transa-button" }) |
+            @Html.ActionLink("Delete Customer", "Delete", new { id=item.CustomerId }, new { @class = "transa-button" })
+        </td>
+    </tr>
+}
+
+</table>

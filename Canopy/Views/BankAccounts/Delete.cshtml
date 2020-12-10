@@ -1,0 +1,28 @@
+﻿@model Canopy.Data.BankAccount
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Remove Account</h2>
+
+<h3></h3>
+<div>
+    <h4>Please confirm deletion of the following account: @Html.DisplayFor(model => model.AccountName)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+        </dt>
+
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+        </div>
+    }
+</div>

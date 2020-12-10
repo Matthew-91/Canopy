@@ -1,0 +1,34 @@
+﻿@model Canopy.Data.Budget
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Budget</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Monthly)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monthly)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BankAccount.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankAccount.AccountName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BudgetId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

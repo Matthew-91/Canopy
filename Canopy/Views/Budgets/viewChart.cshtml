@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "viewChart";
+}
+
+<h2>Account Summary</h2>
+
+<script>// Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Amount');
+        data.addColumn('number', 'Categories');
+        data.addRows(@Html.Action("ChartData", "Budgets", new { id = ViewBag.AccountId}));
+
+        // Set chart options
+        var options = {
+            'title': 'Total expenditures by categories.',
+            'width': 400,
+            'height': 300
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }</script>
+
+<div id="chart_div"></div>
+
+<div style="padding-top: 5px">
+   
+    
+        @Html.ActionLink("Back", "Details", "BankAccounts", new { id = ViewBag.AccountId }, null)
+    
+</div>

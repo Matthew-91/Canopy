@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Canopy.Data.BankAccount>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+    <div id="content">
+        <div class="post">
+            <h2 style="padding-bottom: 35px; color: #494336">Current Accounts:</h2>
+            <div class="account-container">
+                @foreach (var item in Model)
+                {
+                <div>@Html.ActionLink(item.AccountName, "Details", "BankAccounts", new { id = item.BankAccountId }, new { @class = "button-link" })</div>
+                }
+            </div>
+            <p class="meta"><em><a href="#"></a> </em></p>
+            <div class="entry" style="padding-top:75px">
+                <p ></p>
+            </div>
+        </div>
+        
+    </div>
+    <!-- end #content -->
+    <div id="sidebar">
+        <ul>
+            <li>
+
+                <h3 style="color: #033c02">Be sure you add new transactions: Consider setting a single time each week aside to recording all significant transactions and share with your friend how close you were to meeting your goal for the week.</h3>
+                <h4></h4>
+            </li>
+        </ul>
+    </div>
+    <!-- end #sidebar -->
+    <div style="clear: both;">&nbsp;</div>
+
+<!-- end #page -->
+

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Canopy.Data.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="padding-bottom: 15px">Categories</h2>
+
+<p style="padding-bottom: 35px">
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.AccountId }, new { @class = "button-link" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+
+        <td style="padding-bottom: 0.7em">
+            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }, new { @class = "transa-button" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId }, new { @class = "transa-button" })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div style="padding-top: 5px">
+
+
+    @Html.ActionLink("Back", "Details", "BankAccounts", new { id = ViewBag.AccountId }, null)
+
+</div>
